@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – Shopify</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page" data-page="login">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader">
+      <div class="loader-logo">Shop<span>ify</span></div>
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Login Card -->
+  <div class="auth-container">
+    <!-- Logo -->
+    <div class="auth-logo">
+      <h1>Shop<span>ify</span></h1>
+      <p>Your one-stop shopping destination</p>
+    </div>
+
+    <h2 class="auth-title">Welcome back!</h2>
+    <p class="auth-subtitle">Sign in to continue shopping</p>
+
+    <!-- Login Form -->
+    <form id="loginForm" novalidate>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="loginEmail">Email Address</label>
+        <div class="input-wrap">
+          <span class="input-icon">✉️</span>
+          <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <span class="field-error" id="loginEmailError"></span>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
+          <span class="toggle-pw" onclick="togglePassword('loginPassword')">👁️</span>
+        </div>
+        <span class="field-error" id="loginPasswordError"></span>
+      </div>
+
+      <!-- Remember Me -->
+      <div class="form-options">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary btn-full">Sign In →</button>
+
+    </form>
+
+    <!-- Demo Hint -->
+    <div class="auth-divider">Quick Demo</div>
+    <p style="text-align:center; font-size:0.82rem; color:var(--text-muted); margin-bottom:0.5rem;">
+      No account? <a href="register.html" style="color:var(--accent); font-weight:600;">Register first</a>, then login.
+    </p>
+
+    <!-- Switch to Register -->
+    <div class="auth-switch">
+      Don't have an account? <a href="register.html">Create one free</a>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

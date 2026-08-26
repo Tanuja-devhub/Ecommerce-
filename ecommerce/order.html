@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed – Shopify</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="order">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader">
+      <div class="loader-logo">Shop<span>ify</span></div>
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="home.html" class="nav-logo">Shop<span>ify</span></a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html"> Home</a></li>
+      <li><a href="cart.html" class="cart-link">
+        🛒 Cart
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <span id="userGreeting" style="color:rgba(255,255,255,0.7); font-size:0.88rem;"></span>
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <button class="btn-logout" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- ===== ORDER CONFIRMATION ===== -->
+  <section class="order-section">
+    <div class="order-success-card">
+
+      <!-- Success Icon -->
+      <div class="success-icon">✅</div>
+
+      <h1>Order Placed!</h1>
+      <p>Thank you for your purchase. Your order has been confirmed and is being processed.</p>
+
+      <!-- Order ID -->
+      <div class="order-id">
+        Order ID: <strong id="orderIdDisplay">ORD-XXXXXX</strong>
+      </div>
+
+      <!-- Customer & Delivery Details Grid -->
+      <div class="order-details-grid">
+
+        <div class="order-detail-box">
+          <h4> Customer</h4>
+          <p id="orderCustomerName">–</p>
+          <p id="orderCustomerEmail" style="font-size:0.85rem; color:var(--text-muted); font-weight:400; margin-top:2px;">–</p>
+        </div>
+
+        <div class="order-detail-box">
+          <h4>Phone</h4>
+          <p id="orderCustomerPhone">–</p>
+        </div>
+
+        <div class="order-detail-box" style="grid-column:1/-1;">
+          <h4> Shipping Address</h4>
+          <p id="orderCustomerAddress">–</p>
+        </div>
+
+        <div class="order-detail-box">
+          <h4>Order Placed</h4>
+          <p id="orderPlacedDate">–</p>
+        </div>
+
+        <div class="order-detail-box">
+          <h4> Payment</h4>
+          <p>Paid Online ✅</p>
+        </div>
+
+      </div>
+
+      <!-- Delivery Estimate -->
+      <div class="delivery-info">
+        <span class="delivery-icon">🚚</span>
+        <div>
+          <p>Estimated Delivery:</p>
+          <strong id="orderDeliveryDate">–</strong>
+        </div>
+      </div>
+
+      <!-- Ordered Items List -->
+      <div class="order-items-list">
+        <h3> Items Ordered</h3>
+        <div id="orderItemsList">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <!-- Price Breakdown -->
+      <div class="order-total-section">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span id="orderSubtotalAmt">₹0</span>
+        </div>
+        <div class="total-row">
+          <span>Shipping</span>
+          <span id="orderShippingAmt">₹0</span>
+        </div>
+        <div class="total-row">
+          <span>Tax (8%)</span>
+          <span id="orderTaxAmt">₹0</span>
+        </div>
+        <div class="total-row grand">
+          <span>Grand Total</span>
+          <span id="orderGrandTotal">₹0</span>
+        </div>
+      </div>
+
+      <!-- Order Status Banner (shown after cancellation) -->
+      <div id="orderCancelledBanner" style="display:none; background:var(--error,#ff4d4f); color:#fff; border-radius:12px; padding:0.85rem 1.25rem; text-align:center; font-weight:600; font-size:1rem; margin-bottom:1rem;">
+        ❌ Your order has been cancelled successfully.
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="home.html" class="btn btn-primary">Continue Shopping</a>
+        <button class="btn btn-secondary" onclick="printBill()"> Print Receipt</button>
+        <button class="btn btn-cancel-order" id="cancelOrderBtn" onclick="openCancelModal()">🚫 Cancel Order</button>
+      </div>
+
+    </div>
+
+    <!-- Support Note -->
+    <p style="text-align:center; margin-top:1.5rem; font-size:0.85rem; color:var(--text-muted);">
+      Questions about your order? Email us at <a href="mailto:support@shopify.com" style="color:var(--accent);">support@shopify.com</a>
+    </p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>© 2025 <strong>Shopify</strong> · Built with ❤️</p>
+  </footer>
+
+  <!-- ===== CANCEL ORDER MODAL ===== -->
+  <div id="cancelOrderModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px); align-items:center; justify-content:center;">
+    <div style="background:var(--card,#fff); border-radius:20px; padding:2rem 2rem 1.5rem; max-width:420px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.25); text-align:center; animation:cancelModalIn 0.25s ease;">
+      <div style="font-size:2.8rem; margin-bottom:0.5rem;">⚠️</div>
+      <h2 style="font-size:1.25rem; margin-bottom:0.5rem; color:var(--text);">Cancel Order?</h2>
+      <p style="color:var(--text-muted,#888); font-size:0.93rem; margin-bottom:1.5rem;">Are you sure you want to cancel this order? This action cannot be undone.</p>
+      <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="confirmCancelOrder()" style="min-width:130px;">Yes, Cancel</button>
+        <button class="btn btn-secondary" onclick="closeCancelModal()" style="min-width:130px;">No, Keep It</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Print bill / receipt
+    function printBill() {
+      window.print();
+    }
+
+    // ── Cancel Order logic ──────────────────────────────────────────────
+    function openCancelModal() {
+      const modal = document.getElementById('cancelOrderModal');
+      modal.style.display = 'flex';
+    }
+
+    function closeCancelModal() {
+      document.getElementById('cancelOrderModal').style.display = 'none';
+    }
+
+    function confirmCancelOrder() {
+      // 1. Update status in localStorage
+      const order = JSON.parse(localStorage.getItem('shopifyLastOrder') || 'null');
+      if (order) {
+        order.status = 'Cancelled';
+        localStorage.setItem('shopifyLastOrder', JSON.stringify(order));
+
+        // Also update in the orders array
+        const orders = JSON.parse(localStorage.getItem('shopifyOrders') || '[]');
+        const idx = orders.findIndex(o => o.orderId === order.orderId);
+        if (idx !== -1) {
+          orders[idx].status = 'Cancelled';
+          localStorage.setItem('shopifyOrders', JSON.stringify(orders));
+        }
+      }
+
+      // 2. Close modal
+      closeCancelModal();
+
+      // 3. Show cancelled banner
+      document.getElementById('orderCancelledBanner').style.display = 'block';
+
+      // 4. Disable / hide the cancel button
+      const btn = document.getElementById('cancelOrderBtn');
+      if (btn) {
+        btn.disabled = true;
+        btn.style.display = 'none';
+      }
+
+      // 5. Show toast
+      if (typeof showToast === 'function') {
+        showToast('Your order has been cancelled successfully.', 'error');
+      }
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('cancelOrderModal').addEventListener('click', function(e) {
+      if (e.target === this) closeCancelModal();
+    });
+
+    // On page load: if order is already cancelled, restore state
+    window.addEventListener('DOMContentLoaded', function() {
+      const order = JSON.parse(localStorage.getItem('shopifyLastOrder') || 'null');
+      if (order && order.status === 'Cancelled') {
+        document.getElementById('orderCancelledBanner').style.display = 'block';
+        const btn = document.getElementById('cancelOrderBtn');
+        if (btn) {
+          btn.disabled = true;
+          btn.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+  <!-- Print Styles -->
+  <style>
+    @media print {
+      .navbar, .footer, .btn, .delivery-info, .toast-container, .loading-overlay { display: none !important; }
+      .order-section { margin: 0; padding: 0; }
+      .order-success-card { box-shadow: none; border: none; }
+      body { background: white; }
+    }
+  </style>
+
+</body>
+</html>

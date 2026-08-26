@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart – Shopify</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="cart">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader">
+      <div class="loader-logo">Shop<span>ify</span></div>
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="home.html" class="nav-logo">Shop<span>ify</span></a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html"> Home</a></li>
+      <li><a href="cart.html" class="cart-link active">
+        🛒 Cart
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <span id="userGreeting" style="color:rgba(255,255,255,0.7); font-size:0.88rem;"></span>
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <button class="btn-logout" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- ===== CART SECTION ===== -->
+  <section class="cart-section">
+    <h1 class="page-title">🛒 Shopping Cart</h1>
+
+    <!-- Empty Cart State (shown when cart is empty) -->
+    <div class="cart-empty" id="cartEmpty" style="display:none;">
+      <div class="empty-icon">🛒</div>
+      <h2>Your cart is empty</h2>
+      <p>Looks like you haven't added anything yet.</p>
+      <a href="home.html" class="btn btn-primary">Start Shopping →</a>
+    </div>
+
+    <!-- Cart Layout (shown when cart has items) -->
+    <div class="cart-layout" id="cartLayout">
+
+      <!-- Left: Cart Items List -->
+      <div class="cart-items-wrap" id="cartItemsContainer">
+        <!-- Cart items rendered by JS -->
+      </div>
+
+      <!-- Right: Order Summary -->
+      <div class="cart-summary">
+        <h3 class="summary-title">Order Summary</h3>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="summarySubtotal">₹0</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="summaryShipping">₹0</span>
+        </div>
+        <div class="summary-row">
+          <span>Tax (8%)</span>
+          <span id="summaryTax">₹0</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="summaryTotal">₹0</span>
+        </div>
+
+        <!-- Free shipping notice -->
+        <p style="font-size:0.8rem; color:var(--text-muted); margin:0.75rem 0;">
+          🚚 Free shipping on orders over ₹4,149!
+        </p>
+
+        <!-- Checkout Button -->
+        <button class="btn btn-primary btn-full" onclick="proceedToCheckout()">
+          Proceed to Checkout →
+        </button>
+
+        <!-- Continue Shopping -->
+        <a href="home.html" class="btn btn-secondary btn-full" style="margin-top:0.75rem; text-align:center; display:flex;">
+          ← Continue Shopping
+        </a>
+
+        <!-- Promo Code (UI only) -->
+        <div style="margin-top:1.25rem;">
+          <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:0.4rem;">Promo Code</label>
+          <div style="display:flex; gap:0.5rem;">
+            <input type="text" placeholder="Enter code" style="flex:1; padding:0.6rem 0.9rem; border:2px solid var(--border); border-radius:var(--radius-sm); background:var(--bg); color:var(--text); font-size:0.88rem; font-family:var(--font-body);">
+            <button onclick="showToast('Promo codes coming soon! 🎁', 'info')" class="btn btn-sm btn-dark">Apply</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>© 2025 <strong>Shopify</strong> · Built with ❤️</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

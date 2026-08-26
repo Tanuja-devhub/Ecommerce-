@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home – Shopify</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader">
+      <div class="loader-logo">Shop<span>ify</span></div>
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="home.html" class="nav-logo">Shop<span>ify</span></a>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <!-- Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html" class="active"> Home</a></li>
+      <li><a href="cart.html" class="cart-link">
+         Cart
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a></li>
+    </ul>
+
+    <!-- Right side actions -->
+    <div class="nav-actions">
+      <span id="userGreeting" style="color:rgba(255,255,255,0.7); font-size:0.88rem;"></span>
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <button class="btn-logout" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Shop the <span>Best Deals</span><br>of the Season</h1>
+      <p>Discover thousands of products at unbeatable prices. Free shipping on orders over ₹4,149.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn btn-primary">Shop Now →</a>
+        <a href="cart.html" class="btn btn-secondary" style="color:#fff; border-color:rgba(255,255,255,0.4);">View Cart 🛒</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEARCH & FILTER BAR ===== -->
+  <section class="search-section">
+    <div class="search-bar-wrap">
+      <!-- Search Input -->
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search products...">
+      </div>
+
+      <!-- Category Filters -->
+      <div class="category-filters">
+        <button class="filter-btn active" data-category="All">All</button>
+        <button class="filter-btn" data-category="Electronics">⚡ Electronics</button>
+        <button class="filter-btn" data-category="Fashion">👗 Fashion</button>
+        <button class="filter-btn" data-category="Sports">🏃 Sports</button>
+        <button class="filter-btn" data-category="Beauty">💄 Beauty</button>
+        <button class="filter-btn" data-category="Home">🏡 Home</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS GRID ===== -->
+  <section class="products-section" id="products">
+    <div class="section-header">
+      <h2 class="section-title">Featured Products</h2>
+      <span class="products-count" id="productsCount"></span>
+    </div>
+
+    <!-- Products will be rendered here by JavaScript -->
+    <div class="products-grid" id="productsGrid">
+      <!-- Product cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>© 2025 <strong>Shopify</strong> · Built with ❤️ · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

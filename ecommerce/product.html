@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product – Shopify</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="product">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader">
+      <div class="loader-logo">Shop<span>ify</span></div>
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="home.html" class="nav-logo">Shop<span>ify</span></a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html"> Home</a></li>
+      <li><a href="cart.html" class="cart-link">
+        🛒 Cart
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <span id="userGreeting" style="color:rgba(255,255,255,0.7); font-size:0.88rem;"></span>
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <button class="btn-logout" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- ===== PRODUCT DETAIL ===== -->
+  <section class="product-detail-section">
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+      <a href="home.html">Home</a>
+      <span>›</span>
+      <a href="home.html" id="breadcrumbCategory">Category</a>
+      <span>›</span>
+      <span id="detailName" style="color:var(--text);">Product</span>
+    </div>
+
+    <!-- Product Layout: Image + Info -->
+    <div class="product-detail-grid">
+
+      <!-- Left: Product Image -->
+      <div class="product-detail-img">
+        <img src="" alt="Product" id="detailImage">
+      </div>
+
+      <!-- Right: Product Info -->
+      <div class="product-detail-info">
+
+        <div class="detail-category" id="detailCategory">Category</div>
+        <h1 class="detail-name" id="detailName">Product Name</h1>
+
+        <!-- Rating -->
+        <div class="detail-rating">
+          <span class="stars" id="detailStars">★★★★★</span>
+          <span class="rating-count" id="detailRatingCount"></span>
+        </div>
+
+        <!-- Price -->
+        <div class="detail-price-wrap">
+          <span class="detail-price" id="detailPrice">₹0</span>
+          <span class="detail-original-price" id="detailOriginalPrice">₹0</span>
+          <span class="detail-discount" id="detailDiscount">0% off</span>
+        </div>
+
+        <!-- Description -->
+        <p class="detail-description" id="detailDescription">
+          Loading product description...
+        </p>
+
+        <!-- Quantity Selector -->
+        <div class="detail-qty-wrap">
+          <span style="font-weight:600; font-size:0.9rem;">Quantity:</span>
+          <div class="qty-control">
+            <button class="qty-btn" id="qtyMinus">−</button>
+            <span class="qty-value" id="qtyValue">1</span>
+            <button class="qty-btn" id="qtyPlus">+</button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="detail-actions">
+          <button class="btn btn-primary" id="detailAddCart" style="flex:1;">
+             Add to Cart
+          </button>
+          <button class="btn btn-dark" id="detailBuyNow" style="flex:1;">
+            ⚡ Buy Now
+          </button>
+        </div>
+
+        <!-- Product Meta Info -->
+        <div class="detail-meta">
+          <div class="meta-row">
+            <span>🏷️</span>
+            <span>Brand: <strong id="detailBrand">–</strong></span>
+          </div>
+          <div class="meta-row">
+            <span>📦</span>
+            <span>In Stock: <strong id="detailStock">–</strong></span>
+          </div>
+          <div class="meta-row">
+            <span>🚚</span>
+            <span><strong>Free Delivery</strong> on orders over ₹4,149</span>
+          </div>
+          <div class="meta-row">
+            <span>🔄</span>
+            <span><strong>30-Day</strong> free returns</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>© 2025 <strong>Shopify</strong> · Built with ❤️</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

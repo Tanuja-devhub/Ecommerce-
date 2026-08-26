@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register – Shopify</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page" data-page="register">
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader">
+      <div class="loader-logo">Shop<span>ify</span></div>
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Register Card -->
+  <div class="auth-container">
+    <!-- Logo -->
+    <div class="auth-logo">
+      <h1>Shop<span>ify</span></h1>
+      <p>Join millions of happy shoppers</p>
+    </div>
+
+    <h2 class="auth-title">Create Account</h2>
+    <p class="auth-subtitle">Sign up for free in just seconds</p>
+
+    <!-- Register Form -->
+    <form id="registerForm" novalidate>
+
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="regName">Full Name</label>
+        <div class="input-wrap">
+          <span class="input-icon"></span>
+          <input type="text" id="regName" placeholder="John Doe" autocomplete="name">
+        </div>
+        <span class="field-error" id="nameError"></span>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="regEmail">Email Address</label>
+        <div class="input-wrap">
+          <span class="input-icon"></span>
+          <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <span class="field-error" id="emailError"></span>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="regPassword">Password</label>
+        <div class="input-wrap">
+          <span class="input-icon"></span>
+          <input type="password" id="regPassword" placeholder="Min. 6 characters" autocomplete="new-password">
+          <span class="toggle-pw" onclick="togglePassword('regPassword')">👁️</span>
+        </div>
+        <span class="field-error" id="passwordError"></span>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="regConfirm">Confirm Password</label>
+        <div class="input-wrap">
+          <span class="input-icon"></span>
+          <input type="password" id="regConfirm" placeholder="Re-enter your password" autocomplete="new-password">
+          <span class="toggle-pw" onclick="togglePassword('regConfirm')">👁️</span>
+        </div>
+        <span class="field-error" id="confirmError"></span>
+      </div>
+
+      <!-- Terms -->
+      <div class="form-group">
+        <label style="display:flex; gap:0.5rem; align-items:flex-start; cursor:pointer; color:var(--text-muted); font-size:0.85rem; font-weight:400;">
+          <input type="checkbox" required style="margin-top:3px; accent-color:var(--accent);">
+          I agree to the <a href="#" style="color:var(--accent);">Terms of Service</a> and <a href="#" style="color:var(--accent);">Privacy Policy</a>
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary btn-full">Create Account →</button>
+
+    </form>
+
+    <!-- Switch to Login -->
+    <div class="auth-switch" style="margin-top:1.25rem;">
+      Already have an account? <a href="index.html">Sign in</a>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
