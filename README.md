@@ -16,9 +16,7 @@ Shopify is an online shopping system developed as a college project. It provides
 - Checkout
 - Order Confirmation
 - Dark Mode
-
 ## Technologies Used
-
 - HTML
 - CSS
 - JavaScript
@@ -35,7 +33,6 @@ Shopify is an online shopping system developed as a college project. It provides
 - `order.html` - Order confirmation
 
 ## Folder Structure
-
 ```text
 Shopify/
 │
